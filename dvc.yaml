@@ -1,0 +1,10 @@
+stages:
+  prepare:
+    cmd: python -m training.prepare_data
+    deps:
+      - training/prepare_data.py
+    params:
+      - data.sample_frac
+      - data.seed
+    outs:
+      - data/breast_cancer.csv

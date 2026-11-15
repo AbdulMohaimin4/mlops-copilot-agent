@@ -28,16 +28,16 @@ gate pass → MLflow registry alias `candidate`; model baked into image · only 
   enforces timeout, maps exceptions → `error`/`unavailable`, logs tool/status/duration_ms/request_id).
   Req: §6 structured logs, timeouts, service failures.
   Verify: standard gate; `tests/test_common.py` (timeout → `unavailable`, exception → `error`, log record fields, no secret in log).
-- [ ] 🔒 **COMMIT CHECKPOINT 1** (awaiting user) — scaffold + tool contract (`chore: project scaffold, tool contract and JSON logging`).
+- [x] 🔒 **COMMIT CHECKPOINT 1** (05b61e5) — scaffold + tool contract (`chore: project scaffold, tool contract and JSON logging`).
 
 ## 1. Task 1 — DVC data management (§4 Task 1)
 
-- [ ] **1.1 Data stage** — `training/prepare_data.py` (exports sklearn breast-cancer to `data/breast_cancer.csv`, `sample_frac`
+- [x] **1.1 Data stage** — `training/prepare_data.py` (exports sklearn breast-cancer to `data/breast_cancer.csv`, `sample_frac`
   from `params.yaml`, fixed seed), `params.yaml`, `dvc.yaml` (stage `prepare`, outs the CSV), `dvc init`, local remote
   `../mlops-dvc-remote` (outside repo). Req: §4.1 identify tracked datasets, reproducible checkout.
-  Verify: `uv run dvc repro && uv run dvc push && uv run dvc status` (clean) `&& wc -l data/breast_cancer.csv` (≈399 rows + header).
+  Verify: `uv run dvc repro && uv run dvc push && uv run dvc status` (clean) `&& wc -l data/breast_cancer.csv` (398 rows + header).
 - [ ] 🔒 **COMMIT CHECKPOINT 2 (mandatory — dataset v1)** — `dvc.yaml dvc.lock params.yaml .dvc/config .dvcignore
-  data/.gitignore training/prepare_data.py`; `git tag data-v1`.
+  training/prepare_data.py` (no `data/.gitignore`: root `.gitignore` already ignores the CSV); `git tag data-v1`.
 - [ ] **1.2 DVC tools** — `agent/tools/dvc_tools.py`: `list_tracked_datasets`, `get_current_dataset_version` (git commit,
   `data-v*` tag, md5 from `dvc.lock`), `compare_dataset_versions(rev_a, rev_b)`, `check_data_changes`,
   `reproduce_dataset_version(rev)` (non-destructive `dvc get` into a scratch dir + md5 check + manual steps).
@@ -226,3 +226,4 @@ gate pass → MLflow registry alias `candidate`; model baked into image · only 
 | 2026-11-15 | Phase 0–1 | done | Toolchain: Py 3.12.3, uv 0.12.22, git 2.43, Docker 29.6.1 (WSL integration enabled, ~8 GB). kubectl/kind/dvc to install. Decisions recorded above. |
 | 2026-11-15 | 0.1 | pass | uv sync; deps pinned exact (google-genai 3.3.0, mlflow-skinny 3.18.0, dvc 3.67.1, kubernetes 37.0.2, fastapi 0.163.1). mlflow-skinny verified to include sklearn flavor + alias APIs. ruff/mypy clean. |
 | 2026-11-15 | 0.2 | pass | schemas.py, config.py, logging_config.py, tools/common.py; tests/test_common.py 6 passed (ok, invalid_request, timeout, unavailable, rejected, log fields + redaction). |
+| 2026-11-15 | 1.1 | pass | dvc init + remote `local` → ../mlops-dvc-remote. `dvc repro`: 398 rows, data md5 e1c1c4721fa52fd770840aee20006c89. `dvc push` 1 file; `dvc status -c` in sync. Note: `dvc init` auto-staged .dvc/.gitignore, .dvc/config, .dvcignore (DVC default behaviour). |

@@ -1,0 +1,18 @@
+schema: '2.0'
+stages:
+  prepare:
+    cmd: python -m training.prepare_data
+    deps:
+    - path: training/prepare_data.py
+      hash: md5
+      md5: 2432b41dc2d250dfd4c4d115642573fd
+      size: 1105
+    params:
+      params.yaml:
+        data.sample_frac: 0.7
+        data.seed: 42
+    outs:
+    - path: data/breast_cancer.csv
+      hash: md5
+      md5: e1c1c4721fa52fd770840aee20006c89
+      size: 84983
