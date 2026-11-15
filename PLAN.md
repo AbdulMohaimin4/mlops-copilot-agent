@@ -59,8 +59,8 @@ gate pass → MLflow registry alias `candidate`; model baked into image · only 
   `candidate`; gate fail raises. Req: §4.2 metrics/params/artifacts/registry, §4.3 stages, provenance.
   Verify: standard gate; `tests/test_training.py` (validation rejects bad schema/NaNs; gate pass/fail); live:
   `uv run python -m training.train --model logreg` and `--model rf` on v1 → runs visible via `MlflowClient` with tags.
-- [ ] 🔒 **COMMIT CHECKPOINT 4** — `feat(training): training pipeline with MLflow provenance tags and quality gate`.
-- [ ] **2.3 Dataset v2** — set `sample_frac: 1.0`, `dvc repro && dvc push`.
+- [x] 🔒 **COMMIT CHECKPOINT 4** (144463e) — `feat(training): training pipeline with MLflow provenance tags and quality gate`.
+- [x] **2.3 Dataset v2** — set `sample_frac: 1.0`, `dvc repro && dvc push`.
   Verify: `uv run dvc status` clean; `dvc.lock` md5 differs from `data-v1`.
 - [ ] 🔒 **COMMIT CHECKPOINT 5 (mandatory — dataset v2)** — `params.yaml dvc.lock`; `git tag data-v2`. Then train both models
   on v2 (runs record the v2 commit/tag).
@@ -230,3 +230,4 @@ gate pass → MLflow registry alias `candidate`; model baked into image · only 
 | 2026-11-15 | 1.2 | pass | 5 DVC tools; allowlist by command prefix (e.g. `params diff`, `remote list`, `tag --list`), argv only. Live: all 5 ok; reproduce data-v1 → md5 e1c1c47… verified; injected append to CSV → check_data_changes reported `modified`, restored with `dvc checkout --force`. pytest 19 passed. |
 | 2026-11-15 | 2.1 | pass | compose `mlflow` ghcr.io/mlflow/mlflow:v3.18.0, sqlite + proxied artifacts in named volume. /health 200; `--allowed-hosts` verified: localhost/mlflow → 200, evil.com → 403 on API. |
 | 2026-11-15 | 2.2 | pass | train.py stages + CLI. MLflow 3.18 defaults to skops serialization → added `skops`; RF needs explicit trusted type `sklearn.tree._tree.Tree`. 3 early runs FAILED (skops missing/untrusted) — kept as real history. data-v1: logreg run c5bf4b86 f1=0.9811 → v1; rf run 174e46bb f1=0.9720 → v2 @candidate. Gate check with threshold 0.99: run 95f960db tagged failed, no version created, alias unchanged. All runs tagged data_version=data-v1, data_md5 e1c1c47…, git_commit 10fea22, git_dirty=true (code uncommitted at the time). pytest 27 passed. Design: `candidate` = most recent gate-passing model, not highest F1. |
+| 2026-11-15 | 2.3 | pass | sample_frac 1.0 → 569 rows, md5 b154f6a78a166306105a372ea2344899 (v1 was e1c1c47…). dvc push 1 file; status clean, cache/remote in sync. |

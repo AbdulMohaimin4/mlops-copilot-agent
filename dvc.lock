@@ -9,10 +9,10 @@ stages:
       size: 1105
     params:
       params.yaml:
-        data.sample_frac: 0.7
+        data.sample_frac: 1.0
         data.seed: 42
     outs:
     - path: data/breast_cancer.csv
       hash: md5
-      md5: e1c1c4721fa52fd770840aee20006c89
-      size: 84983
+      md5: b154f6a78a166306105a372ea2344899
+      size: 121385
