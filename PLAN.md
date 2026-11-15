@@ -46,14 +46,14 @@ gate pass → MLflow registry alias `candidate`; model baked into image · only 
   Req: §4.1 all bullets; "restrict commands to approved operations".
   Verify: standard gate; `tests/test_dvc_tools.py` (disallowed subcommand rejected, injection-style rev rejected, parse of
   mocked `dvc` JSON); live: run each tool in `TOOLS` via `execute_tool` against the repo.
-- [ ] 🔒 **COMMIT CHECKPOINT 3** — `feat(dvc): allowlisted DVC provenance tools`.
+- [x] 🔒 **COMMIT CHECKPOINT 3** (10fea22) — `feat(dvc): allowlisted DVC provenance tools`.
 
 ## 2. Task 2 — MLflow experiment intelligence (§4 Task 2)
 
-- [ ] **2.1 MLflow server** — `docker-compose.yml` service `mlflow` (pinned image, sqlite backend + local artifacts in gitignored
+- [x] **2.1 MLflow server** — `docker-compose.yml` service `mlflow` (pinned image, sqlite backend + local artifacts in gitignored
   volume, port 5000). Req: §4.2 tracking server.
   Verify: `docker compose up -d mlflow && curl -sf localhost:5000/health`.
-- [ ] **2.2 Training module** — `training/train.py`: `validate_dataset`, `preprocess`, `train_model`, `evaluate_and_log`,
+- [x] **2.2 Training module** — `training/train.py`: `validate_dataset`, `preprocess`, `train_model`, `evaluate_and_log`,
   `apply_quality_gate` (pure functions reused by the DAG) + CLI. Each run tags `git_commit`, `data_version` (tag),
   `data_md5`, `dvc_rev`, `quality_gate` (passed/failed); gate pass registers model `breast-cancer-classifier` and sets alias
   `candidate`; gate fail raises. Req: §4.2 metrics/params/artifacts/registry, §4.3 stages, provenance.
@@ -228,3 +228,5 @@ gate pass → MLflow registry alias `candidate`; model baked into image · only 
 | 2026-11-15 | 0.2 | pass | schemas.py, config.py, logging_config.py, tools/common.py; tests/test_common.py 6 passed (ok, invalid_request, timeout, unavailable, rejected, log fields + redaction). |
 | 2026-11-15 | 1.1 | pass | dvc init + remote `local` → ../mlops-dvc-remote. `dvc repro`: 398 rows, data md5 e1c1c4721fa52fd770840aee20006c89. `dvc push` 1 file; `dvc status -c` in sync. Note: `dvc init` auto-staged .dvc/.gitignore, .dvc/config, .dvcignore (DVC default behaviour). |
 | 2026-11-15 | 1.2 | pass | 5 DVC tools; allowlist by command prefix (e.g. `params diff`, `remote list`, `tag --list`), argv only. Live: all 5 ok; reproduce data-v1 → md5 e1c1c47… verified; injected append to CSV → check_data_changes reported `modified`, restored with `dvc checkout --force`. pytest 19 passed. |
+| 2026-11-15 | 2.1 | pass | compose `mlflow` ghcr.io/mlflow/mlflow:v3.18.0, sqlite + proxied artifacts in named volume. /health 200; `--allowed-hosts` verified: localhost/mlflow → 200, evil.com → 403 on API. |
+| 2026-11-15 | 2.2 | pass | train.py stages + CLI. MLflow 3.18 defaults to skops serialization → added `skops`; RF needs explicit trusted type `sklearn.tree._tree.Tree`. 3 early runs FAILED (skops missing/untrusted) — kept as real history. data-v1: logreg run c5bf4b86 f1=0.9811 → v1; rf run 174e46bb f1=0.9720 → v2 @candidate. Gate check with threshold 0.99: run 95f960db tagged failed, no version created, alias unchanged. All runs tagged data_version=data-v1, data_md5 e1c1c47…, git_commit 10fea22, git_dirty=true (code uncommitted at the time). pytest 27 passed. Design: `candidate` = most recent gate-passing model, not highest F1. |

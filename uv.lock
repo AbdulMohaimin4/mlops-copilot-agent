@@ -1170,12 +1170,14 @@ dependencies = [
     { name = "fastapi" },
     { name = "google-genai" },
     { name = "httpx" },
+    { name = "joblib" },
     { name = "kubernetes" },
     { name = "mlflow-skinny" },
     { name = "pandas" },
     { name = "pydantic" },
     { name = "pyyaml" },
     { name = "scikit-learn" },
+    { name = "skops" },
     { name = "uvicorn", extra = ["standard"] },
 ]
 
@@ -1194,12 +1196,14 @@ requires-dist = [
     { name = "fastapi", specifier = "==0.163.1" },
     { name = "google-genai", specifier = "==3.3.0" },
     { name = "httpx", specifier = "==0.28.1" },
+    { name = "joblib", specifier = "==1.6.0" },
     { name = "kubernetes", specifier = "==37.0.2" },
     { name = "mlflow-skinny", specifier = "==3.18.0" },
     { name = "pandas", specifier = "==3.1.1" },
     { name = "pydantic", specifier = "==2.14.3" },
     { name = "pyyaml", specifier = "==6.0.3" },
     { name = "scikit-learn", specifier = "==1.9.1" },
+    { name = "skops", specifier = "==0.16.0" },
     { name = "uvicorn", extras = ["standard"], specifier = "==0.54.0" },
 ]
 
@@ -1468,6 +1472,18 @@ source = { registry = "https://pypi.org/simple" }
 sdist = { url = "https://files.pythonhosted.org/packages/bf/db/7fc19e6f2dc92a966727031389fc2e08b558f0f25eb7403c1119ad4713cd/pluggy-1.7.0.tar.gz", hash = "sha256:d1eaa46ebb595891b860ab086b4d09c8588af65ebd4361b8e8f4bb8920b90ba8", size = 123304, upload-time = "2026-10-15T09:50:58.343Z" }
 wheels = [
     { url = "https://files.pythonhosted.org/packages/40/9e/2b38731e0fc536806f16490e1a12d7f0dc2a1235aa8cc07bcc75416a7daa/pluggy-1.7.0-py3-none-any.whl", hash = "sha256:7dd7b0d8832ba3cb632c306926ded123429211b83641b35dc5c41ad2d34f9bec", size = 27082, upload-time = "2026-10-15T09:50:56.808Z" },
+]
+
+[[package]]
+name = "prettytable"
+version = "3.18.0"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "wcwidth" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/81/74/ba08d81e668ccfe8658d7520a307e63c19862c08eb4ccb26f356c5239a7a/prettytable-3.18.0.tar.gz", hash = "sha256:439217116152244369caf3d9f1caf2f9fe29b03bd79e88d2928c8e718c95d680", size = 76373, upload-time = "2026-06-22T16:07:50.174Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/fe/be/2e6798ace5cc036f5d05d36b7b2fd85346f1a708c87060890b070d0ec607/prettytable-3.18.0-py3-none-any.whl", hash = "sha256:b3346e0e6f79180833aebaac088ae926340586cf6d7d991b9eb125b65f72313a", size = 37357, upload-time = "2026-06-22T16:07:48.595Z" },
 ]
 
 [[package]]
@@ -1932,6 +1948,22 @@ source = { registry = "https://pypi.org/simple" }
 sdist = { url = "https://files.pythonhosted.org/packages/ff/dd/e58588cf2d02266d504f4399979740b8b2b61fbd7719a89578afaa6558a3/shtab-1.13.0.tar.gz", hash = "sha256:0a5be9d7ab2b4549e9a38252abcd5ecf5ec6813ecd80c6b06fa851bff55a5085", size = 67655, upload-time = "2026-10-21T11:23:57.266Z" }
 wheels = [
     { url = "https://files.pythonhosted.org/packages/6a/a6/2179498fd9d8a25ce1ae049f434442aa4d7bae2361bbac62eeb19107be8e/shtab-1.13.0-py3-none-any.whl", hash = "sha256:cdf7543fc1888dd131320917f3ba9643d8f1a77d406114a09d5a31f76274c7d9", size = 22887, upload-time = "2026-10-21T11:23:55.654Z" },
+]
+
+[[package]]
+name = "skops"
+version = "0.16.0"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "numpy" },
+    { name = "packaging" },
+    { name = "prettytable" },
+    { name = "scikit-learn" },
+    { name = "scipy" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/52/4b/7fef0af1efcb06c0986762645fb414ad850314a891434a2bbaea12a962ea/skops-0.16.0.tar.gz", hash = "sha256:58ddb63fed9f2a8545baa1a91c45c26d44cf65c83e2fd217541c41e411cf1d74", size = 673544, upload-time = "2026-09-24T06:29:46.96Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/44/a3/08ae9ea7f7c16e20a447d9289dce40f06f52607ed9a39f554a8426d96ba3/skops-0.16.0-py3-none-any.whl", hash = "sha256:5b2eb1bc49392c74a38db04481e2d110f97d9a72d6ae38fbd698aa7a865a9070", size = 148650, upload-time = "2026-09-24T06:29:45.491Z" },
 ]
 
 [[package]]

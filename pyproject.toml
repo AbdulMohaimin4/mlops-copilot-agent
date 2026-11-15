@@ -8,12 +8,14 @@ dependencies = [
     "fastapi==0.163.1",
     "google-genai==3.3.0",
     "httpx==0.28.1",
+    "joblib==1.6.0",
     "kubernetes==37.0.2",
     "mlflow-skinny==3.18.0",
     "pandas==3.1.1",
     "pydantic==2.14.3",
     "pyyaml==6.0.3",
     "scikit-learn==1.9.1",
+    "skops==0.16.0",
     "uvicorn[standard]==0.54.0",
 ]
 
