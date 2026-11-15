@@ -1,0 +1,14 @@
+# Non-sensitive runtime configuration for the inference API.
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: inference-config
+  namespace: mlops
+  labels:
+    app.kubernetes.io/name: inference-api
+    app.kubernetes.io/part-of: mlops-agent
+data:
+  APP_VERSION: model-v6
+  MODEL_NAME: breast-cancer-classifier
+  MODEL_DIR: /app/inference/model
+  LOG_LEVEL: INFO
