@@ -9,6 +9,9 @@ Production-ready MLOps AI agent (university Assignment 03). Spec: `Assignment_03
 - Types: `uv run mypy agent api`
 - Tests: `uv run pytest -q`
 - Standard gate (after every item): all four of the above chained with `&&`
+- DAG tests (need Airflow; run in its image): `docker run --rm -v "$PWD:/opt/airflow/project:ro" -w /opt/airflow/project
+  -e PYTHONPATH=/opt/airflow/project --entrypoint bash mlops-airflow:3.3.2 -c "airflow db migrate >/dev/null &&
+  python -m pip install -q pytest==9.2.0 && python -m pytest -q -p no:cacheprovider tests/test_dag.py"`
 - MLflow + Airflow: `docker compose up -d` (MLflow :5000, Airflow API :8080)
 - Data: `uv run dvc repro && uv run dvc push`
 - Train locally: `uv run python -m training.train --model logreg|rf`
@@ -39,4 +42,6 @@ Production-ready MLOps AI agent (university Assignment 03). Spec: `Assignment_03
 - Timeouts on every external call; config only via env vars with sane defaults.
 - Safety: DVC/git subprocess allowlist (argv, no shell); Airflow DAG allowlist; state-changing ops become pending
   actions that run only after explicit user confirmation; K8s writes only in namespace `mlops`.
-- Approved namespace: `mlops`. LLM: Gemini via `google-genai`, model from `AGENT_MODEL`.
+- Approved namespace: `mlops`. LLM: Gemini via `google-genai`, model from `AGENT_MODEL` (default gemini-3.5-flash;
+  free tier = 20 requests/day/model, gemini-3.5-flash-lite used when exhausted).
+- Never use `pkill -f <pattern>` in a command that contains the pattern (it kills its own shell).
