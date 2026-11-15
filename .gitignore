@@ -1,0 +1,20 @@
+# Secrets and credentials
+.env
+*.kubeconfig
+kubeconfig*
+
+# Python / tooling
+__pycache__/
+*.pyc
+.venv/
+.mypy_cache/
+.ruff_cache/
+.pytest_cache/
+
+# Data and artifacts (versioned by DVC / MLflow, not git)
+/data/*.csv
+mlruns/
+mlflow-data/
+airflow-logs/
+inference/model/
+scratch/
