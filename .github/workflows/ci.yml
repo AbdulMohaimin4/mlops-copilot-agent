@@ -1,0 +1,49 @@
+# Lint, type-check and test on every pull request and push to main.
+# All external services (DVC remote, MLflow, Airflow, Kubernetes, Gemini) are mocked in tests.
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  lint-type-test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v7.0.1
+      - uses: astral-sh/setup-uv@v10.3.3
+        with:
+          enable-cache: true
+      - name: Install locked dependencies
+        run: uv sync --locked
+      - name: Ruff lint
+        run: uv run ruff check .
+      - name: Ruff format
+        run: uv run ruff format --check .
+      - name: Mypy
+        run: uv run mypy agent api
+      - name: Pytest
+        run: uv run pytest -q -rs
+
+  dag-tests:
+    # Airflow cannot share an environment with the agent API (it pins an older FastAPI),
+    # so the DAG tests run inside the same Airflow image used by docker compose.
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v7.0.1
+      - name: Build Airflow image
+        run: docker build -f airflow.Dockerfile -t mlops-airflow:ci .
+      - name: DAG structure and failure-handling tests
+        run: >
+          docker run --rm -v "$PWD:/opt/airflow/project:ro" -w /opt/airflow/project
+          -e PYTHONPATH=/opt/airflow/project -e PYTHONDONTWRITEBYTECODE=1
+          --entrypoint bash mlops-airflow:ci -c
+          "airflow db migrate > /dev/null &&
+          python -m pip install -q pytest==9.2.0 &&
+          python -m pytest -q -p no:cacheprovider tests/test_dag.py"
