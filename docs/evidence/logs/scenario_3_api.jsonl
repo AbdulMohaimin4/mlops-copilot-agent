@@ -1,0 +1,175 @@
+INFO:     Started server process [40251]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8000 (Press CTRL+C to quit)
+{"ts": "2026-11-15T17:02:35.902907+00:00", "level": "INFO", "logger": "httpx2", "request_id": "4598e83dfd2a", "message": "HTTP Request: POST https://generativelanguage.googleapis.com/v1/models/gemini-3.5-flash:generateContent \"HTTP/1.1 200 OK\""}
+{"ts": "2026-11-15T17:02:35.918832+00:00", "level": "INFO", "logger": "agent.orchestrator", "request_id": "4598e83dfd2a", "message": "action held", "tool": "trigger_dag", "event": "pending_action"}
+{"ts": "2026-11-15T17:02:38.759494+00:00", "level": "INFO", "logger": "httpx2", "request_id": "4598e83dfd2a", "message": "HTTP Request: POST https://generativelanguage.googleapis.com/v1/models/gemini-3.5-flash:generateContent \"HTTP/1.1 200 OK\""}
+{"ts": "2026-11-15T17:02:38.764452+00:00", "level": "INFO", "logger": "agent.orchestrator", "request_id": "3e3b5f03a889", "message": "user confirmed action", "tool": "trigger_dag", "event": "confirm"}
+{"ts": "2026-11-15T17:02:39.054162+00:00", "level": "INFO", "logger": "httpx", "request_id": "-", "message": "HTTP Request: POST http://localhost:8080/auth/token \"HTTP/1.1 201 Created\""}
+{"ts": "2026-11-15T17:02:39.266266+00:00", "level": "INFO", "logger": "httpx", "request_id": "-", "message": "HTTP Request: POST http://localhost:8080/api/v2/dags/training_pipeline/dagRuns \"HTTP/1.1 200 OK\""}
+{"ts": "2026-11-15T17:02:39.266895+00:00", "level": "INFO", "logger": "agent.tools", "request_id": "3e3b5f03a889", "message": "tool call finished", "tool": "trigger_dag", "status": "ok", "duration_ms": 504.1, "error_type": null, "event": "tool_call"}
+{"ts": "2026-11-15T17:03:27.281763+00:00", "level": "INFO", "logger": "httpx2", "request_id": "be61968cac3a", "message": "HTTP Request: POST https://generativelanguage.googleapis.com/v1/models/gemini-3.5-flash:generateContent \"HTTP/1.1 200 OK\""}
+{"ts": "2026-11-15T17:03:27.398247+00:00", "level": "INFO", "logger": "httpx", "request_id": "-", "message": "HTTP Request: POST http://localhost:8080/auth/token \"HTTP/1.1 201 Created\""}
+{"ts": "2026-11-15T17:03:27.567471+00:00", "level": "INFO", "logger": "httpx", "request_id": "-", "message": "HTTP Request: GET http://localhost:8080/api/v2/dags/training_pipeline/dagRuns?limit=5&order_by=-start_date \"HTTP/1.1 200 OK\""}
+{"ts": "2026-11-15T17:03:27.568459+00:00", "level": "INFO", "logger": "agent.tools", "request_id": "be61968cac3a", "message": "tool call finished", "tool": "get_dag_runs", "status": "ok", "duration_ms": 285.3, "error_type": null, "event": "tool_call"}
+{"ts": "2026-11-15T17:03:27.687058+00:00", "level": "INFO", "logger": "httpx", "request_id": "-", "message": "HTTP Request: POST http://localhost:8080/auth/token \"HTTP/1.1 201 Created\""}
+{"ts": "2026-11-15T17:03:27.706812+00:00", "level": "INFO", "logger": "httpx", "request_id": "-", "message": "HTTP Request: GET http://localhost:8080/api/v2/dags/training_pipeline/dagRuns/manual__2026-11-15T17%3A02%3A39.131296%2B00%3A00 \"HTTP/1.1 200 OK\""}
+{"ts": "2026-11-15T17:03:27.826161+00:00", "level": "INFO", "logger": "httpx", "request_id": "-", "message": "HTTP Request: POST http://localhost:8080/auth/token \"HTTP/1.1 201 Created\""}
+{"ts": "2026-11-15T17:03:27.887882+00:00", "level": "INFO", "logger": "httpx", "request_id": "-", "message": "HTTP Request: GET http://localhost:8080/api/v2/dags/training_pipeline/dagRuns/manual__2026-11-15T17%3A02%3A39.131296%2B00%3A00/taskInstances \"HTTP/1.1 200 OK\""}
+{"ts": "2026-11-15T17:03:27.888552+00:00", "level": "INFO", "logger": "agent.tools", "request_id": "be61968cac3a", "message": "tool call finished", "tool": "get_failed_tasks", "status": "ok", "duration_ms": 319.6, "error_type": null, "event": "tool_call"}
+{"ts": "2026-11-15T17:03:27.970062+00:00", "level": "INFO", "logger": "agent.tools", "request_id": "be61968cac3a", "message": "tool call finished", "tool": "list_runs", "status": "error", "duration_ms": 81.2, "error_type": "ValueError", "event": "tool_call"}
+{"ts": "2026-11-15T17:03:28.043453+00:00", "level": "INFO", "logger": "agent.tools", "request_id": "be61968cac3a", "message": "tool call finished", "tool": "get_model_registry_info", "status": "ok", "duration_ms": 73.1, "error_type": null, "event": "tool_call"}
+{"ts": "2026-11-15T17:03:30.171791+00:00", "level": "INFO", "logger": "httpx2", "request_id": "be61968cac3a", "message": "HTTP Request: POST https://generativelanguage.googleapis.com/v1/models/gemini-3.5-flash:generateContent \"HTTP/1.1 200 OK\""}
+{"ts": "2026-11-15T17:03:30.313680+00:00", "level": "INFO", "logger": "agent.tools", "request_id": "be61968cac3a", "message": "tool call finished", "tool": "get_run_details", "status": "ok", "duration_ms": 140.5, "error_type": null, "event": "tool_call"}
+{"ts": "2026-11-15T17:03:36.281389+00:00", "level": "INFO", "logger": "httpx2", "request_id": "be61968cac3a", "message": "HTTP Request: POST https://generativelanguage.googleapis.com/v1/models/gemini-3.5-flash:generateContent \"HTTP/1.1 200 OK\""}
+{"ts": "2026-11-15T17:03:57.922445+00:00", "level": "INFO", "logger": "httpx2", "request_id": "b3245f343e6c", "message": "HTTP Request: POST https://generativelanguage.googleapis.com/v1/models/gemini-3.5-flash:generateContent \"HTTP/1.1 200 OK\""}
+{"ts": "2026-11-15T17:03:58.016940+00:00", "level": "INFO", "logger": "agent.tools", "request_id": "b3245f343e6c", "message": "tool call finished", "tool": "list_workloads", "status": "ok", "duration_ms": 93.1, "error_type": null, "event": "tool_call"}
+{"ts": "2026-11-15T17:03:58.052550+00:00", "level": "INFO", "logger": "agent.tools", "request_id": "b3245f343e6c", "message": "tool call finished", "tool": "list_services", "status": "ok", "duration_ms": 35.3, "error_type": null, "event": "tool_call"}
+{"ts": "2026-11-15T17:03:58.076657+00:00", "level": "INFO", "logger": "agent.tools", "request_id": "b3245f343e6c", "message": "tool call finished", "tool": "get_deployed_version", "status": "ok", "duration_ms": 23.8, "error_type": null, "event": "tool_call"}
+{"ts": "2026-11-15T17:03:58.095477+00:00", "level": "INFO", "logger": "agent.tools", "request_id": "b3245f343e6c", "message": "tool call finished", "tool": "find_unhealthy_pods", "status": "ok", "duration_ms": 18.4, "error_type": null, "event": "tool_call"}
+{"ts": "2026-11-15T17:04:07.080627+00:00", "level": "INFO", "logger": "httpx2", "request_id": "b3245f343e6c", "message": "HTTP Request: POST https://generativelanguage.googleapis.com/v1/models/gemini-3.5-flash:generateContent \"HTTP/1.1 200 OK\""}
+{"ts": "2026-11-15T17:04:07.143724+00:00", "level": "INFO", "logger": "agent.tools", "request_id": "b3245f343e6c", "message": "tool call finished", "tool": "get_pod_status_and_logs", "status": "ok", "duration_ms": 60.1, "error_type": null, "event": "tool_call"}
+{"ts": "2026-11-15T17:04:07.163197+00:00", "level": "INFO", "logger": "agent.tools", "request_id": "b3245f343e6c", "message": "tool call finished", "tool": "get_pod_status_and_logs", "status": "ok", "duration_ms": 19.1, "error_type": null, "event": "tool_call"}
+{"ts": "2026-11-15T17:04:13.012625+00:00", "level": "INFO", "logger": "httpx2", "request_id": "b3245f343e6c", "message": "HTTP Request: POST https://generativelanguage.googleapis.com/v1/models/gemini-3.5-flash:generateContent \"HTTP/1.1 200 OK\""}
+{"ts": "2026-11-15T17:04:15.023460+00:00", "level": "INFO", "logger": "httpx2", "request_id": "fa5f02fef91b", "message": "HTTP Request: POST https://generativelanguage.googleapis.com/v1/models/gemini-3.5-flash:generateContent \"HTTP/1.1 200 OK\""}
+{"ts": "2026-11-15T17:04:15.024532+00:00", "level": "INFO", "logger": "agent.orchestrator", "request_id": "fa5f02fef91b", "message": "action held", "tool": "restart_deployment", "event": "pending_action"}
+{"ts": "2026-11-15T17:04:17.285650+00:00", "level": "INFO", "logger": "httpx2", "request_id": "fa5f02fef91b", "message": "HTTP Request: POST https://generativelanguage.googleapis.com/v1/models/gemini-3.5-flash:generateContent \"HTTP/1.1 200 OK\""}
+{"ts": "2026-11-15T17:04:17.291237+00:00", "level": "INFO", "logger": "agent.orchestrator", "request_id": "20011f9a7ab1", "message": "user confirmed action", "tool": "restart_deployment", "event": "confirm"}
+{"ts": "2026-11-15T17:04:17.291907+00:00", "level": "INFO", "logger": "agent.tools", "request_id": "20011f9a7ab1", "message": "tool call finished", "tool": "restart_deployment", "status": "error", "duration_ms": 0.5, "error_type": "rejected", "event": "tool_call"}
+{"ts": "2026-11-15T17:04:18.885599+00:00", "level": "INFO", "logger": "httpx2", "request_id": "ee4b0899c3f7", "message": "HTTP Request: POST https://generativelanguage.googleapis.com/v1/models/gemini-3.5-flash:generateContent \"HTTP/1.1 200 OK\""}
+{"ts": "2026-11-15T17:04:18.887402+00:00", "level": "INFO", "logger": "agent.orchestrator", "request_id": "ee4b0899c3f7", "message": "action held", "tool": "restart_deployment", "event": "pending_action"}
+{"ts": "2026-11-15T17:04:20.334289+00:00", "level": "INFO", "logger": "httpx2", "request_id": "ee4b0899c3f7", "message": "HTTP Request: POST https://generativelanguage.googleapis.com/v1/models/gemini-3.5-flash:generateContent \"HTTP/1.1 200 OK\""}
+{"ts": "2026-11-15T17:04:20.338273+00:00", "level": "INFO", "logger": "agent.orchestrator", "request_id": "c0496d69d879", "message": "user confirmed action", "tool": "restart_deployment", "event": "confirm"}
+{"ts": "2026-11-15T17:04:20.367386+00:00", "level": "INFO", "logger": "agent.tools", "request_id": "c0496d69d879", "message": "tool call finished", "tool": "restart_deployment", "status": "ok", "duration_ms": 28.9, "error_type": null, "event": "tool_call"}
+{"ts": "2026-11-15T17:04:47.851401+00:00", "level": "INFO", "logger": "httpx2", "request_id": "f0131b8ef9fb", "message": "HTTP Request: POST https://generativelanguage.googleapis.com/v1/models/gemini-3.5-flash:generateContent \"HTTP/1.1 200 OK\""}
+{"ts": "2026-11-15T17:04:47.868539+00:00", "level": "INFO", "logger": "agent.tools", "request_id": "f0131b8ef9fb", "message": "tool call finished", "tool": "list_workloads", "status": "ok", "duration_ms": 15.9, "error_type": null, "event": "tool_call"}
+{"ts": "2026-11-15T17:04:47.882494+00:00", "level": "INFO", "logger": "agent.tools", "request_id": "f0131b8ef9fb", "message": "tool call finished", "tool": "list_services", "status": "ok", "duration_ms": 13.7, "error_type": null, "event": "tool_call"}
+{"ts": "2026-11-15T17:04:47.897040+00:00", "level": "INFO", "logger": "agent.tools", "request_id": "f0131b8ef9fb", "message": "tool call finished", "tool": "find_unhealthy_pods", "status": "ok", "duration_ms": 14.2, "error_type": null, "event": "tool_call"}
+{"ts": "2026-11-15T17:04:47.924232+00:00", "level": "INFO", "logger": "agent.tools", "request_id": "f0131b8ef9fb", "message": "tool call finished", "tool": "get_deployed_version", "status": "ok", "duration_ms": 26.9, "error_type": null, "event": "tool_call"}
+{"ts": "2026-11-15T17:04:50.091912+00:00", "level": "INFO", "logger": "httpx2", "request_id": "f0131b8ef9fb", "message": "HTTP Request: POST https://generativelanguage.googleapis.com/v1/models/gemini-3.5-flash:generateContent \"HTTP/1.1 200 OK\""}
+{"ts": "2026-11-15T17:04:50.111784+00:00", "level": "INFO", "logger": "agent.tools", "request_id": "f0131b8ef9fb", "message": "tool call finished", "tool": "get_pod_status_and_logs", "status": "ok", "duration_ms": 18.8, "error_type": null, "event": "tool_call"}
+{"ts": "2026-11-15T17:04:50.129687+00:00", "level": "INFO", "logger": "agent.tools", "request_id": "f0131b8ef9fb", "message": "tool call finished", "tool": "get_pod_status_and_logs", "status": "ok", "duration_ms": 17.6, "error_type": null, "event": "tool_call"}
+{"ts": "2026-11-15T17:04:50.637587+00:00", "level": "INFO", "logger": "httpx2", "request_id": "f0131b8ef9fb", "message": "HTTP Request: POST https://generativelanguage.googleapis.com/v1/models/gemini-3.5-flash:generateContent \"HTTP/1.1 429 Too Many Requests\""}
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "/home/a/Projects/university/mlops-copilot-agent/.venv/lib/python3.12/site-packages/uvicorn/protocols/http/httptools_impl.py", line 422, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/a/Projects/university/mlops-copilot-agent/.venv/lib/python3.12/site-packages/uvicorn/middleware/proxy_headers.py", line 63, in __call__
+    return await self.app(scope, receive, send)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/a/Projects/university/mlops-copilot-agent/.venv/lib/python3.12/site-packages/fastapi/applications.py", line 1194, in __call__
+    await super().__call__(scope, receive, send)
+  File "/home/a/Projects/university/mlops-copilot-agent/.venv/lib/python3.12/site-packages/starlette/applications.py", line 96, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/home/a/Projects/university/mlops-copilot-agent/.venv/lib/python3.12/site-packages/starlette/middleware/errors.py", line 186, in __call__
+    raise exc
+  File "/home/a/Projects/university/mlops-copilot-agent/.venv/lib/python3.12/site-packages/starlette/middleware/errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "/home/a/Projects/university/mlops-copilot-agent/.venv/lib/python3.12/site-packages/fastapi/telemetry/_asgi.py", line 151, in __call__
+    await self.app(scope, receive, send)
+  File "/home/a/Projects/university/mlops-copilot-agent/.venv/lib/python3.12/site-packages/starlette/middleware/exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/home/a/Projects/university/mlops-copilot-agent/.venv/lib/python3.12/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/home/a/Projects/university/mlops-copilot-agent/.venv/lib/python3.12/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/home/a/Projects/university/mlops-copilot-agent/.venv/lib/python3.12/site-packages/fastapi/middleware/asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "/home/a/Projects/university/mlops-copilot-agent/.venv/lib/python3.12/site-packages/starlette/routing.py", line 683, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/home/a/Projects/university/mlops-copilot-agent/.venv/lib/python3.12/site-packages/fastapi/routing.py", line 2811, in app
+    await route.handle(scope, receive, send)
+  File "/home/a/Projects/university/mlops-copilot-agent/.venv/lib/python3.12/site-packages/fastapi/routing.py", line 1330, in handle
+    await super().handle(scope, receive, send)
+  File "/home/a/Projects/university/mlops-copilot-agent/.venv/lib/python3.12/site-packages/starlette/routing.py", line 289, in handle
+    await self.app(scope, receive, send)
+  File "/home/a/Projects/university/mlops-copilot-agent/.venv/lib/python3.12/site-packages/fastapi/routing.py", line 166, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/home/a/Projects/university/mlops-copilot-agent/.venv/lib/python3.12/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/home/a/Projects/university/mlops-copilot-agent/.venv/lib/python3.12/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/home/a/Projects/university/mlops-copilot-agent/.venv/lib/python3.12/site-packages/fastapi/routing.py", line 152, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "/home/a/Projects/university/mlops-copilot-agent/.venv/lib/python3.12/site-packages/fastapi/routing.py", line 745, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/a/Projects/university/mlops-copilot-agent/.venv/lib/python3.12/site-packages/fastapi/routing.py", line 374, in run_endpoint_function
+    return await run_in_threadpool(
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/a/Projects/university/mlops-copilot-agent/.venv/lib/python3.12/site-packages/starlette/concurrency.py", line 34, in run_in_threadpool
+    return await anyio.to_thread.run_sync(func)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/a/Projects/university/mlops-copilot-agent/.venv/lib/python3.12/site-packages/anyio/to_thread.py", line 65, in run_sync
+    return await get_async_backend().run_sync_in_worker_thread(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/a/Projects/university/mlops-copilot-agent/.venv/lib/python3.12/site-packages/anyio/_backends/_asyncio.py", line 2779, in run_sync_in_worker_thread
+    return await future
+           ^^^^^^^^^^^^
+  File "/home/a/Projects/university/mlops-copilot-agent/.venv/lib/python3.12/site-packages/anyio/_backends/_asyncio.py", line 1124, in run
+    result = context.run(func, *args)
+             ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/a/Projects/university/mlops-copilot-agent/.venv/lib/python3.12/site-packages/fastapi/telemetry/_api.py", line 244, in _run_sync_endpoint
+    return function(**arguments)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/a/Projects/university/mlops-copilot-agent/api/main.py", line 78, in chat
+    response = agent.chat(request.message)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/a/Projects/university/mlops-copilot-agent/agent/orchestrator.py", line 141, in chat
+    return self._chat(request_id, message)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/a/Projects/university/mlops-copilot-agent/agent/orchestrator.py", line 170, in _chat
+    reply = self.llm.generate(self.history)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/a/Projects/university/mlops-copilot-agent/agent/orchestrator.py", line 107, in generate
+    return self._client.models.generate_content(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/a/Projects/university/mlops-copilot-agent/.venv/lib/python3.12/site-packages/google/genai/models.py", line 6010, in generate_content
+    return self._generate_content_with_continuation(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/a/Projects/university/mlops-copilot-agent/.venv/lib/python3.12/site-packages/google/genai/models.py", line 5893, in _generate_content_with_continuation
+    response = self._generate_content(
+               ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/a/Projects/university/mlops-copilot-agent/.venv/lib/python3.12/site-packages/google/genai/models.py", line 4441, in _generate_content
+    response = self._api_client.request(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/a/Projects/university/mlops-copilot-agent/.venv/lib/python3.12/site-packages/google/genai/_api_client.py", line 2179, in request
+    response = self._request(http_request, http_options, stream=False)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/a/Projects/university/mlops-copilot-agent/.venv/lib/python3.12/site-packages/google/genai/_api_client.py", line 1955, in _request
+    return self._retry(self._request_once, http_request, stream)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/a/Projects/university/mlops-copilot-agent/.venv/lib/python3.12/site-packages/tenacity/__init__.py", line 470, in __call__
+    do = self.iter(retry_state=retry_state)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/a/Projects/university/mlops-copilot-agent/.venv/lib/python3.12/site-packages/tenacity/__init__.py", line 371, in iter
+    result = action(retry_state)
+             ^^^^^^^^^^^^^^^^^^^
+  File "/home/a/Projects/university/mlops-copilot-agent/.venv/lib/python3.12/site-packages/tenacity/__init__.py", line 413, in exc_check
+    raise retry_exc.reraise()
+          ^^^^^^^^^^^^^^^^^^^
+  File "/home/a/Projects/university/mlops-copilot-agent/.venv/lib/python3.12/site-packages/tenacity/__init__.py", line 184, in reraise
+    raise self.last_attempt.result()
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/concurrent/futures/_base.py", line 449, in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/concurrent/futures/_base.py", line 401, in __get_result
+    raise self._exception
+  File "/home/a/Projects/university/mlops-copilot-agent/.venv/lib/python3.12/site-packages/tenacity/__init__.py", line 473, in __call__
+    result = fn(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^
+  File "/home/a/Projects/university/mlops-copilot-agent/.venv/lib/python3.12/site-packages/google/genai/_api_client.py", line 1932, in _request_once
+    errors.APIError.raise_for_response(response)
+  File "/home/a/Projects/university/mlops-copilot-agent/.venv/lib/python3.12/site-packages/google/genai/errors.py", line 187, in raise_for_response
+    cls.raise_error(response.status_code, response_json, response)
+  File "/home/a/Projects/university/mlops-copilot-agent/.venv/lib/python3.12/site-packages/google/genai/errors.py", line 216, in raise_error
+    raise ClientError(status_code, response_json, response)
+google.genai.errors.ClientError: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://aistudio.google.com/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-3.6-flash, description: Generate content requests per day limit exceeded on Free Tier. See https://aistudio.google.com/docs/rate-limits.\nPlease retry in 14h55m12.491632135s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://aistudio.google.com/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'description': 'Generate content requests per day limit exceeded on Free Tier. See https://aistudio.google.com/docs/rate-limits.', 'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerDayPerProjectPerModel-FreeTier', 'quotaDimensions': {'model': 'gemini-3.6-flash', 'location': 'global'}, 'quotaValue': '20'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '53712s'}]}}
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [40251]
